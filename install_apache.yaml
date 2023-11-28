@@ -1,0 +1,10 @@
+---
+
+- hosts: all
+  become: true
+  tasks:
+
+    - name: install acpace2 on all servers
+      apt: 
+        name: apache2
+   

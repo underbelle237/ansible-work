@@ -7,17 +7,33 @@
     - name: update servers
       apt:
         update_cache: yes
-      when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "8.2"
+      when: ansible_distribution == "Ubuntu" 
 
     - name: install acpace2 on all servers
       apt: 
         name: apache2
         state: latest
-      when: ansible_distributiion == "Ubuntu" and ansible_distribution_version == "8.2"
+      when: ansible_distributiion == "Ubuntu"
 
     - name: install php for apache
       apt:
         name: libapache2-mod-php
         state: latest
-      when: ansible_distribution == "Ubuntu" and ansible_distribution_version == "8.2" 
-   
+      when: ansible_distribution == "Ubuntu"
+  
+    - name: update servers
+      dfn:
+        update_cache: yes
+      when: ansible_distribution == "CentOS"
+
+    - name: install httpd on all servers
+      dfn:
+        name: httpd
+        state: latest
+      when: ansible_distributiion == "CentOS"
+
+    - name: install php for httpd
+       dfn:
+        name: php
+        state: latest
+      when: ansible_distribution == "CentOS"

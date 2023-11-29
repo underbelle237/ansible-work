@@ -22,18 +22,18 @@
       when: ansible_distribution == "Ubuntu"
   
     - name: update servers
-      dfn:
+      dnf:
         update_cache: yes
       when: ansible_distribution == "CentOS"
 
     - name: install httpd on all servers
-      dfn:
+      dnf:
         name: httpd
         state: latest
       when: ansible_distributiion == "CentOS"
 
     - name: install php for httpd
-       dfn:
+       dnf:
         name: php
         state: latest
       when: ansible_distribution == "CentOS"

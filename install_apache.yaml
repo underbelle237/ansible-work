@@ -5,19 +5,9 @@
   tasks:
 
     - name: update servers
-      apt:
+      package:
         name:
-           - apache2
-           - libapache2-mod-php
+           - "{{ apache_package }}"
+           - "{{ php_package }}"
         state: latest
         update_cache: yes 
-      when: ansible_distribution == "Ubuntu"
-
-    - name: update servers
-      dnf:
-        name:
-          - httpd
-          - php
-        state: latest
-        update_cache: yes
-      when: ansible_distribution == "CentOS"

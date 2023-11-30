@@ -11,7 +11,7 @@
            - libapache2-mod-php
         state: latest
         update_cache: yes 
-      when: ansible_distributiion == "Ubuntu"
+      when: ansible_distribution == "Ubuntu"
 
     - name: update servers
       dnf:

@@ -5,6 +5,7 @@
   pre_tasks:
 
     - name: update ubuntu servers
+      tags: alwways
       apt:
         update_cache: yes
         upgrade: dist 
@@ -15,6 +16,7 @@
   tasks: 
 
     - name: install httpd on webservers
+      tags: ubuntu,apache,php,web
       apt:
         name:
           - apache2
@@ -27,6 +29,7 @@
   tasks: 
 
     - name: install docker on dev_servers
+      tags: dev,tree
       apt:
         name:
           - tree

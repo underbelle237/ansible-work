@@ -24,6 +24,15 @@
         state: latest
       when: ansible_distribution == "Ubuntu"
 
+    - name: copy files to apache server
+      tags: copy,apache,web,php,ubuntu
+      copy:
+        src: demo.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+
 - hosts: dev_servers
   become: true
   tasks: 

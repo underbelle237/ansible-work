@@ -6,34 +6,18 @@
 
     - name: update servers
       apt:
-        update_cache: yes
-      when: ansible_distribution == "Ubuntu" 
-
-    - name: install acpace2 on all servers
-      apt: 
-        name: apache2
+        name:
+           - apache2
+           - libapache2-mod-php
         state: latest
+        update_cache: yes 
       when: ansible_distributiion == "Ubuntu"
 
-    - name: install php for apache
-      apt:
-        name: libapache2-mod-php
-        state: latest
-      when: ansible_distribution == "Ubuntu"
-  
     - name: update servers
       dnf:
+        name:
+          - httpd
+          - php
+        state: latest
         update_cache: yes
-      when: ansible_distribution == "CentOS"
-
-    - name: install httpd on all servers
-      dnf:
-        name: httpd
-        state: latest
-      when: ansible_distributiion == "CentOS"
-
-    - name: install php for httpd
-       dnf:
-        name: php
-        state: latest
       when: ansible_distribution == "CentOS"

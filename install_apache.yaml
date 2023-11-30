@@ -2,12 +2,33 @@
 
 - hosts: all
   become: true
-  tasks:
+  pre_tasks:
 
-    - name: update servers
-      package:
+    - name: update ubuntu servers
+      apt:
+        update_cache: yes
+        upgrade: dist 
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: web_servers
+  become: true
+  tasks: 
+
+    - name: install httpd on webservers
+      apt:
         name:
-           - "{{ apache_package }}"
-           - "{{ php_package }}"
+          - apache2
+          - libapache2-mod-php
         state: latest
-        update_cache: yes 
+      when: ansible_distribution == "Ubuntu"
+
+- hosts: dev_servers
+  become: true
+  tasks: 
+
+    - name: install docker on dev_servers
+      apt:
+        name:
+          - tree
+        state: latest
+      when: ansible_distribution == "Ubuntu" 

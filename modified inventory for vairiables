@@ -14,8 +14,8 @@
     - name: update and install acpace2 on all servers
       package:
          name:
-           - "{{ apache }}"
-           - "{{ php }}"
+           - "{{ apache_package }}"
+           - "{{ php_package }}"
          state: latest
          update_cache: yes
 

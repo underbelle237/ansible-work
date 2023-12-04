@@ -21,6 +21,22 @@
         name: underbelle
         groups: root
 
+    - name: add ssh key for underbelle
+      tags: always
+      authorized_key:
+          user: underbelle
+          key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICFA76lrdDm4vyEYNezsRmVbXldSw8T4lbd/Hikpf4T7 underbelle key"
+
+    - name: add underlle sudoer file
+      tags: always
+      copy:
+        src: underbelle_sudoer
+        dest: /etc/sudoers.d/underbelle
+        owner: root
+        group: root
+        mode: 0440
+
+
 
 - hosts: web_servers
   become: true

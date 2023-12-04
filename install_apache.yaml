@@ -11,6 +11,17 @@
         upgrade: dist 
       when: ansible_distribution == "Ubuntu"
 
+- hosts: all
+  become: true
+  tasks:
+
+    - name: add user underbelle to servers
+      tags: always
+      user:
+        name: underbelle
+        groups: root
+
+
 - hosts: web_servers
   become: true
   tasks: 
